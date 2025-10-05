@@ -1,0 +1,24 @@
+syntax = "proto3";
+option java_package = "com.example";
+option java_outer_classname = "HelloworldProto";
+
+service Greeter {
+  rpc SayHello (HelloRequest) returns (HelloReply) {}
+  rpc SayHelloAgain (HelloRequest) returns (HelloReply) {}
+  rpc Chat (stream ChatMessage) returns (stream ChatMessage) {}  // Добавьте эту строку
+}
+
+message HelloRequest {
+  string name = 1;
+}
+
+message HelloReply {
+  string message = 1;
+}
+
+// Добавьте эти сообщения для чата
+message ChatMessage {
+  string user = 1;
+  string text = 2;
+  int64 timestamp = 3;
+}
